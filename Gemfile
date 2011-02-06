@@ -38,4 +38,7 @@ group :test, :development do
   gem "cucumber"
   gem "cucumber-rails"
   gem "capybara"
+  gem 'factory_girl_rails'
+  gem 'fabrication'
 end
+gem "video", :path => "video", :require => "video"
