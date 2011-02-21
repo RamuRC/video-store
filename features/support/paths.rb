@@ -16,6 +16,18 @@ module NavigationHelpers
       admin_path
     when /admin products page/
       admin_products_path
+    when /^"(.*)" product page/
+      "/products/#{$1.downcase}"
+    when /shopping cart page/
+      '/cart'
+    when /checkout page/
+      '/checkout'
+    when /checkout payment page/
+      '/checkout/payment'
+    when /checkout confirm page/
+      '/checkout/confirm'
+    when /watch now "(.*)"/
+      watch_now_product_path(Product.find_by_name($1).id)
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

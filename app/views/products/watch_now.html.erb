@@ -1,0 +1,27 @@
+<% @body_id = 'product-details' %>
+<h1><%= @product.name %></h1>
+
+<script type="text/javascript" src="../../swfobject.js"></script>
+<script type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+var params = {};
+params.quality = "high";
+params.bgcolor = "#FFFFFFF";
+params.allowscriptaccess = "sameDomain";
+params.allowfullscreen = "true";
+var attributes = {};
+attributes.id = "REOPS";
+attributes.name = "REOPS";
+attributes.align = "middle";
+// Set the config path here
+var flashvars = { configPath: "http://localhost:3000/products/1/get_xml" };
+swfobject.embedSWF(
+"../../REOPS.swf",
+"flashContent",
+640, 480,
+"10.0.42",
+"playerProductInstall.swf",
+flashvars, params, attributes
+);
+</script>
+<div id="flashContent"></div>

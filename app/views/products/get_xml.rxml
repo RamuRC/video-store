@@ -1,0 +1,18 @@
+xml.instruct! :xml, :version=>"1.0"
+ 
+xml.player(:width => 640, :height => 480, :scaleMode => "letterbox", :isLive => false, :autoPlay => true, :updateInterval => 250) {
+  xml.mediaElement {
+    xml.mediaElement {
+      xml.id "seeker"
+      xml.mimeType "video/x-flv"
+      xml.streamType "recorded"
+      xml.deliveryType "progressive"
+      xml.media(:url => "http://dl.dropbox.com/u/2980264/OSMF/logo_animated.flv")
+    }
+  }
+  xml.skin(:path => "../../assets/skins/RE_Skin.swf") {
+    xml.skinElement(:id => "controlBar", :elementClass => "com.realeyes.osmfplayer.controls.ControlBar", :initMethod => "initControlBarInstance", :scaleMode => "none", :hAdjust => "0", :vAdjust => "-12", :vAlign => "BOTTOM", :autoPosition => true, :draggable => true, :autoHide => true)
+    xml.skinElement(:id => "loadingIndicator", :elementClass => "com.realeyes.osmfplayer.controls.LoadingIndicator", :initMethod => "initLoadingIndicatorInstance", :hAdjust => "0", :vAdjust => "0", :vAlign => "CENTER", :autoPosition => true)
+    xml.skinElement(:id => "closedCaptionField", :elementClass => "com.realeyes.osmfplayer.controls.ClosedCaptionField", :initMethod => "initClosedCaptionFieldInstance", :hAdjust => "0", :vAdjust => "0", :hAlign => "LEFT", :vAlign => "TOP", :autoPosition => true)
+  }
+}
