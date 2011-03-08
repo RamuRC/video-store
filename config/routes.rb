@@ -1,4 +1,15 @@
 VideoStore::Application.routes.draw do
+  resources :orders do
+    post :populate, :on => :collection
+    resources :line_items
+    resources :creditcards
+    resources :creditcard_payments
+  end
+
+  resources :products do
+    get :watch_now, :on => :member
+    get :get_xml, :on => :member
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -41,4 +41,3 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'fabrication'
 end
-gem "video", :path => "video", :require => "video"
