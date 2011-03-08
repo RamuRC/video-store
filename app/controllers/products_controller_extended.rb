@@ -47,3 +47,18 @@ ProductsController.class_eval do
     end
   end
 end
+
+Admin::ProductsController.class_eval do
+  before_filter :upload_video, :only => :create
+
+  def upload_video
+    product = params[:product]
+    if product[:url].empty?
+      directory = "/home/bruna/projects/crtmpserver/builders/cmake/applications/flvplayback/mediaFolder"
+      video_file_name = product[:video_file].split("/").last.split(".").first
+      product[:url] = "rtmp://localhost/flvplayback/#{video_file_name}"
+      path = File.join(directory, "#{video_file_name}.flv")
+      File.open(path, 'wb') { |f| f.write(File.open(product[:video_file],'r').read)}
+    end
+  end
+end

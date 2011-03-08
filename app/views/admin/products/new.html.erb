@@ -11,8 +11,14 @@
     <%= f.error_message_on :name %>
   <% end %>
 
+  <%= f.field_container :video_file do %>
+    <%= f.label :video_file, t("video_file") %><br />
+    <%= f.text_field :video_file, :class => 'fullwidth title'  %>
+    <%= f.error_message_on :video_file %>
+  <% end %>
+
   <%= f.field_container :url do %>
-    <%= f.label :url, t("url") %> <span class="required">*</span><br />
+    <%= f.label :url, t("url") %></span><br />
     <%= f.text_field :url, :class => 'fullwidth title'  %>
     <%= f.error_message_on :url %>
   <% end %>
