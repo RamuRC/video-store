@@ -1193,3 +1193,7 @@ div#checkout #checkout-summary {
   padding: 20px;
   width: 180px;
 }
+
+#product-video #wrapper {
+    text-align: center; 
+}

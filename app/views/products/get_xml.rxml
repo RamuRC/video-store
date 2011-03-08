@@ -7,7 +7,7 @@ xml.player(:width => 640, :height => 480, :scaleMode => "letterbox", :isLive => 
       xml.mimeType "video/x-flv"
       xml.streamType "recorded"
       xml.deliveryType "progressive"
-      xml.media(:url => "http://dl.dropbox.com/u/2980264/OSMF/logo_animated.flv")
+      xml.media(:url => @product.url)
     }
   }
   xml.skin(:path => "../../assets/skins/RE_Skin.swf") {
