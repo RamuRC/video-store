@@ -11,17 +11,24 @@
     <%= f.error_message_on :name %>
   <% end %>
 
-  <%= f.field_container :video_file do %>
-    <%= f.label :video_file, t("video_file") %><br />
-    <%= f.text_field :video_file, :class => 'fullwidth title'  %>
-    <%= f.error_message_on :video_file %>
-  <% end %>
+  <%= radio_button_tag 'file_or_url', 'video_url' %> Video Url
+  <%= radio_button_tag 'file_or_url', 'video_file' %> Video File<br />
 
-  <%= f.field_container :url do %>
-    <%= f.label :url, t("url") %></span><br />
-    <%= f.text_field :url, :class => 'fullwidth title'  %>
-    <%= f.error_message_on :url %>
-  <% end %>
+  <div class="video_url hidden">
+    <%= f.field_container :url do %>
+      <%= f.label :url, t("url"), :class => 'url_field' %><br />
+      <%= f.text_field :url, :class => 'fullwidth title'  %>
+      <%= f.error_message_on :url %>
+    <% end %>
+  </div>
+
+  <div class="video_file hidden">
+    <%= f.field_container :video_file do %>
+      <%= f.label :video_file, t("video_file") , :class => 'file_field' %><br />
+      <%= f.text_field :video_file, :class => 'fullwidth title'  %>
+      <%= f.error_message_on :video_file %>
+    <% end %>
+  </div>
 
   <div class="yui-gb">
     <div class="yui-u first">
@@ -63,3 +70,4 @@
 </fieldset>
 <% end %>
 <%= javascript_tag "datePickerController.create();" %>
+<%= javascript_include_tag 'admin/products/new' %>
