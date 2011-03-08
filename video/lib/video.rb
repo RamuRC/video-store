@@ -12,6 +12,8 @@ module Video
       end
 
       Spree::Config.set(:address_requires_state => false)
+      Spree::Config.set(:logo => '/images/logo.png')
+      Spree::Config.set(:admin_interface_logo => '/images/logo.png') 
 
       Order.class_eval do
         # customize the checkout state machine
