@@ -57,3 +57,20 @@ Feature: Buy a video
     And a state
     When I go to watch now "Test" page
     Then I should be on login page
+
+  Scenario: Dont let the user buy repeated videos
+    Given the user "user@example.com/password"
+    And the product video
+    | name  | url      | price |
+    | Test  | test.mp4 | 15.00 |
+    And a country
+    And a state
+    When I go to login page
+    And I fill in "Email" with "user@example.com"
+    And I fill in "Password" with "password"
+    And press "Log In"
+    Given the user already bought the videos "Test"
+    When I go to the homepage
+    Then I should see "Watch now!" within "#product_1"
+    When I follow "Test"
+    Then I should be on watch now "Test" page
