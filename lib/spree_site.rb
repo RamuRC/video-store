@@ -7,6 +7,7 @@ module SpreeSite
         Rails.configuration.cache_classes ? require(c) : load(c)
       end
 
+      Spree::Config.set(:site_name => 'Video Store')
       Spree::Config.set(:address_requires_state => false)
       Spree::Config.set(:logo => '/images/logo.png')
       Spree::Config.set(:admin_interface_logo => '/images/logo.png') 
