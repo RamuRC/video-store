@@ -3,6 +3,10 @@ require 'video_store_hooks'
 module SpreeSite
   class Engine < Rails::Engine
     def self.activate
+      Dir.glob(File.join(File.dirname(__FILE__), "../app/**/*_extended*.rb")) do |c|
+        Rails.configuration.cache_classes ? require(c) : load(c)
+      end
+
       Spree::Config.set(:address_requires_state => false)
       Spree::Config.set(:logo => '/images/logo.png')
       Spree::Config.set(:admin_interface_logo => '/images/logo.png') 
