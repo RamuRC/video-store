@@ -6,7 +6,6 @@
         <th class="price"><%= t('price') %></th>
         <th></th>
         <th class="total"><span><%= t('total') %></span></th>
-        <th><span></span></th>
       <% end %>
     </tr>
 
@@ -18,7 +17,6 @@
           <td class="price"><%= number_to_currency item.price %></td>
           <td></td>
           <td class="total"><span><%= number_to_currency (item.price * item.quantity)%></span></td>
-          <td><span><%= link_to "Watch now", watch_now_product_path(item.product.id) %></span></td>
         <% end %>
       </tr>
     <% end %>
