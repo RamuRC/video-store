@@ -1,0 +1,58 @@
+<h1><%= t("my_account") %></h1>
+
+<%= hook :account_summary do %>
+
+<table>
+  <tr>
+    <td><%= t("email") %>:</td>
+    <td>
+      <%= @user.email %>
+    </td>
+  </tr>
+</table>
+<p><%= link_to t('edit'), edit_object_url %></p>
+
+<% end %>
+
+<h2><%= t("my_videos") %></h2>
+<ul class="videos-listing">
+  <% @orders.each do |order| %>
+    <% order.line_items.each do |item| %>
+      <li id="product_<%= item.variant.product.id %>">
+        <%= link_to small_image(item.variant.product), watch_now_product_path(item.variant.product) %>
+        <%= link_to raw(item.variant.product.name), watch_now_product_path(item.variant.product.id) %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+
+<%= hook :account_my_orders do %>
+
+<h2><%= t("my_orders") %></h2>
+ 
+<table class="order-summary" width="545">
+  <thead>
+    <tr>
+      <th><%= t("order_number") %></th>
+      <th><%= t("order_date") %></th>
+      <th><%= t("status") %></th>
+      <th><%= t("customer") %></th>
+      <th><%= t("total") %></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @orders.each do |order| %>
+    <tr class="<%= cycle('even', 'odd') %>">
+      <td><%= link_to order.number, order_url(order) %></td>
+      <td><%=order.created_at.to_date%></td>
+      <td><%= t(order.state).titleize %></td>
+      <td><%= order.user.email if order.user %></td>
+      <td><%= number_to_currency order.total %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+ 
+<br />
+
+<% end %>
