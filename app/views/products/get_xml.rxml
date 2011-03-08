@@ -1,12 +1,12 @@
 xml.instruct! :xml, :version=>"1.0"
  
-xml.player(:width => 640, :height => 480, :scaleMode => "letterbox", :isLive => false, :autoPlay => true, :updateInterval => 250) {
+xml.player(:width => 640, :height => 480, :scaleMode => "stretch", :isLive => false, :autoPlay => true, :updateInterval => 250) {
   xml.mediaElement {
     xml.mediaElement {
       xml.id "seeker"
       xml.mimeType "video/x-flv"
       xml.streamType "recorded"
-      xml.deliveryType "progressive"
+      xml.deliveryType "streaming"
       xml.media(:url => @product.url)
     }
   }

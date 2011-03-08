@@ -14,7 +14,7 @@ attributes.id = "REOPS";
 attributes.name = "REOPS";
 attributes.align = "middle";
 // Set the config path here
-var flashvars = { configPath: "http://localhost:3000/products/1/get_xml" };
+var flashvars = { configPath: "http://localhost:3000/products/"+<%= @product.id.to_s %>+"/get_xml" };
 swfobject.embedSWF(
 "../../REOPS.swf",
 "flashContent",
