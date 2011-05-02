@@ -7,10 +7,12 @@ module SpreeSite
         Rails.configuration.cache_classes ? require(c) : load(c)
       end
 
+    if Spree::Config.instance
       Spree::Config.set(:site_name => 'Video Store')
       Spree::Config.set(:address_requires_state => false)
       Spree::Config.set(:logo => '/images/logo.png')
       Spree::Config.set(:admin_interface_logo => '/images/logo.png') 
+    end
 
       Order.class_eval do
         # customize the checkout state machine
