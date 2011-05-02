@@ -55,7 +55,8 @@ Admin::ProductsController.class_eval do
     product = params[:product]
     if product[:url].empty?
       directory = "/home/bruna/projects/crtmpserver/builders/cmake/applications/flvplayback/mediaFolder"
-      video_file_name = product[:video_file].split("/").last.split(".").first
+      video_file_name = product[:video_file].split("/").last.split(".")
+      video_file_name = video_file_name[0...video_file_name.size-1].join
       product[:url] = "rtmp://localhost/flvplayback/#{video_file_name}"
       path = File.join(directory, "#{video_file_name}.flv")
       File.open(path, 'wb') { |f| f.write(File.open(product[:video_file],'r').read)}
