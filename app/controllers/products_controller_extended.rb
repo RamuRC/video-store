@@ -43,7 +43,7 @@ ProductsController.class_eval do
           return
         end
       end
-      redirect_to product_path(@product.name.downcase)
+      redirect_to product_path(@product.permalink)
     end
   end
 end
