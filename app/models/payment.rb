@@ -28,10 +28,8 @@ class Payment < ActiveRecord::Base
 
   # order state machine (see http://github.com/pluginaweek/state_machine/tree/master for details)
   state_machine :initial => 'checkout' do
-    debugger
     # With card payments, happens before purchase or authorization happens
     event :started_processing do
-      debugger
       transition :from => ['checkout', 'pending', 'completed'], :to => 'processing'
     end
     # When processing during checkout fails
