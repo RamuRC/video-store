@@ -13,12 +13,14 @@
   <% products.each do |product| %>
     <% if Spree::Config[:show_zero_stock_products] || product.has_stock? %>
       <li id="product_<%= product.id %>">
-        <%= link_to small_image(product), product %>
         <% if video_already_bought?(product) %>
+          <%= link_to small_image(product), product %>
           <%= link_to raw(product.name +  "<span>Watch now!</span>"), watch_now_product_path(product.id), :class => 'info' %>
         <% elsif already_on_cart?(product) %>
+          <%= link_to small_image(product) %>
           <%= raw(product.name + "<p>This video is already on your cart!</p>") %>
         <% else %>
+          <%= link_to small_image(product), product %>
           <%= link_to raw(product.name + " <span class='price selling'>#{product_price(product)}</span>"), product, :class => 'info' %>
         <% end %>
       </li>
