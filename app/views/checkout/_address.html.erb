@@ -27,6 +27,34 @@ div.inner input[type=text], div.inner select { width: 80%; }
         <%= bill_form.label :city, t(:city) %>
         <%= bill_form.text_field :city, :class => 'required' %><span class="req">*</span>
       </p>
+      <% if Spree::Config[:address_requires_state] %>
+        <p class="field">
+          <span id="bstate">
+            <% have_states = !@order.bill_address.country.states.empty? %>
+            <%= bill_form.label :state, t(:state) %>
+            <noscript>
+              <%= bill_form.text_field :state_name, :class => 'required' %>
+            </noscript>
+            <% state_elements = [
+               bill_form.collection_select(:state_id, @order.bill_address.country.states,
+                                  :id, :name,
+                                  {:include_blank => true},
+                                  {:class => have_states ? "required" : "hidden",
+                                  :disabled => !have_states}) +
+                bill_form.text_field(:state_name,
+                                  :class => !have_states ? "required" : "hidden",
+                                  :disabled => have_states)
+                ].join.gsub('"', "'").gsub("\n", "")
+            %>
+            <script type="text/javascript" language="javascript" charset="utf-8">
+            // <![CDATA[
+            document.write("<%= raw state_elements %>");
+            // ]]>
+            </script>
+          </span>
+          <span class="req">*</span>
+        </p>
+      <% end %>
       <p id="bzip" class="field">
         <%= bill_form.label :zipcode, t(:zip) %>
         <%= bill_form.text_field :zipcode, :class => 'required' %><span class="req">*</span>
